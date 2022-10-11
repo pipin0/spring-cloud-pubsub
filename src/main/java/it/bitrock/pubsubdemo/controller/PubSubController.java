@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PubSubController {
     @Autowired
-    PubSubService pubSubService;
+    private PubSubService pubSubService;
 
     @PostMapping("pub-sub")
     public void pubSub(@RequestBody String message) throws Exception {

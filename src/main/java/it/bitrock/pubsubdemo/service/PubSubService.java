@@ -15,7 +15,7 @@ import javax.annotation.PostConstruct;
 @Service
 public class PubSubService {
     @Autowired
-    ConfigProperties configProperties;
+    private ConfigProperties configProperties;
     @Autowired
     private PubSubTemplate pubSubTemplate;
 
