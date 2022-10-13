@@ -6,14 +6,15 @@ resource "google_cloud_run_service" "default" {
   template {
     spec {
       containers {
-        image = "gcr.io/vittorio-playground/spring-cloud-pubsub@sha256:8aa0773dd13a399cae55d26a2455aa27d10b3c660df9bebcb4584353c1a71995"
-        env {
-          name  = "TF_VAR_subscription_name"
-          value = "demo-pub-sub-subscription"
-        }
+        image = "gcr.io/${var.project}/${var.github_repository}"
+
         env {
           name  = "TF_VAR_topic_name"
-          value = "demo-pub-sub-great-topic"
+          value = google_pubsub_topic.demo-pub-sub-topic.name
+        }
+        env {
+          name  = "TF_VAR_subscription_name"
+          value = google_pubsub_subscription.demo-pub-sub-subscription.name
         }
 
         resources {
@@ -25,13 +26,17 @@ resource "google_cloud_run_service" "default" {
       }
     }
   }
+
+  depends_on = [
+    google_pubsub_topic.demo-pub-sub-topic,
+    google_pubsub_subscription.demo-pub-sub-subscription
+  ]
 }
 
 resource "google_cloud_run_service_iam_member" "public_access" {
   count    = var.allow_public_access ? 1 : 0
   service  = google_cloud_run_service.default.name
   location = google_cloud_run_service.default.location
-#  project  = google_cloud_run_service.default.project
   role     = "roles/run.invoker"
   member   = "allUsers"
 
