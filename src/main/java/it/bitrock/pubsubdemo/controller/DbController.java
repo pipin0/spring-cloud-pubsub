@@ -3,9 +3,7 @@ package it.bitrock.pubsubdemo.controller;
 import it.bitrock.pubsubdemo.model.Vehicle;
 import it.bitrock.pubsubdemo.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,5 +16,15 @@ public class DbController {
     @GetMapping("/getAll")
     public List<Vehicle> getAll() {
         return vehicleService.getAll();
+    }
+
+    @PostMapping("save")
+    public Vehicle save(@RequestBody Vehicle vehicle) {
+        return vehicleService.save(vehicle);
+    }
+
+    @GetMapping("/delete")
+    public void delete(@RequestParam Long id) {
+        vehicleService.delete(id);
     }
 }

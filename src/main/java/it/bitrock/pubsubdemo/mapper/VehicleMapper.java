@@ -14,4 +14,8 @@ public class VehicleMapper {
                 vehicleEntity.getColor()
         );
     }
+
+    public VehicleEntity mapToVehicleEntity(Vehicle vehicle) {
+        return new VehicleEntity(vehicle.getId(), vehicle.getBrand(), vehicle.getModel(), vehicle.getColor());
+    }
 }

@@ -19,4 +19,16 @@ public class VehicleService {
         return vehicleRepository.findAll().stream()
                 .map(vehicleMapper::mapToVehicle).toList();
     }
+
+    public Vehicle save(Vehicle vehicle) {
+        return vehicleMapper.mapToVehicle(
+                vehicleRepository.save(
+                        vehicleMapper.mapToVehicleEntity(vehicle)
+                )
+        );
+    }
+
+    public void delete(Long id) {
+        vehicleRepository.deleteById(id);
+    }
 }
