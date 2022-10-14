@@ -1,0 +1,6 @@
+
+  * immagine Docker: con latest OK, può andare bene ad esempio in sviluppo.
+    Senza usare "latest", ad esempio per produzione, bisogna capire come definire Cloud Run.
+
+  * creazione DB: viene creato il DB con l'utente di default "postgres" però non so quale sia la password.
+    Per ora creo un nuovo utente.

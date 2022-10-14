@@ -1,20 +1,20 @@
 resource "google_cloud_run_service" "default" {
-  name                       = "demo-pub-sub-run"
-  location                   = "europe-west6"
+  name                       = "${var.app_name_suffix}-run"
+  location                   = var.region
   autogenerate_revision_name = true
 
   template {
     spec {
       containers {
-        image = "gcr.io/${var.project}/${var.github_repository}"
+        image = "gcr.io/${var.project}/${var.github_repository}:latest"
 
         env {
           name  = "TF_VAR_topic_name"
-          value = google_pubsub_topic.demo-pub-sub-topic.name
+          value = google_pubsub_topic.demo-topic.name
         }
         env {
           name  = "TF_VAR_subscription_name"
-          value = google_pubsub_subscription.demo-pub-sub-subscription.name
+          value = google_pubsub_subscription.demo-subscription.name
         }
 
         resources {
@@ -28,8 +28,9 @@ resource "google_cloud_run_service" "default" {
   }
 
   depends_on = [
-    google_pubsub_topic.demo-pub-sub-topic,
-    google_pubsub_subscription.demo-pub-sub-subscription
+    google_pubsub_topic.demo-topic,
+    google_pubsub_subscription.demo-subscription,
+    google_sql_database_instance.demo-db-instance
   ]
 }
 
