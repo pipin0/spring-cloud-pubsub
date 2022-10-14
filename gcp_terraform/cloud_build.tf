@@ -21,7 +21,7 @@ resource "google_cloudbuild_trigger" "demo-build-trigger" {
       name = "gcr.io/cloud-builders/docker"
       args = ["build",
         "-t", "gcr.io/$PROJECT_ID/$REPO_NAME:latest",
-#        "-t", "gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA",
+        # "-t", "gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA",
         "-f", "Dockerfile", "."
       ]
     }
