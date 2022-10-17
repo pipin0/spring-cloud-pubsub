@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Vehicle {
-    private Long id;
-    private String brand;
-    private String model;
-    private String color;
+public class FileRecordRequest {
+    private String fileName;
+    private String bucketName;
+    private String fileContent;
 }

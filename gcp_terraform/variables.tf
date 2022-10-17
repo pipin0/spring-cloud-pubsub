@@ -6,9 +6,9 @@ variable "github_owner" {}
 
 variable "github_repository" {}
 
-variable "topic_name" {}
+variable "audio_topic_name" {}
 
-variable "subscription_name" {}
+variable "audio_subscription_name" {}
 
 variable "region" {
   default = "europe-west6"

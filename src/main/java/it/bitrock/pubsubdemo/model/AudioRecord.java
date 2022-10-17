@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AudioRecord {
+    private Long id;
     private String title;
     private String author;
-    private byte[] audioBytes;
+    private byte[] bytes;
 }

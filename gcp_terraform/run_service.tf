@@ -9,12 +9,12 @@ resource "google_cloud_run_service" "default" {
         image = "gcr.io/${var.project}/${var.github_repository}:latest"
 
         env {
-          name  = "TF_VAR_topic_name"
-          value = google_pubsub_topic.demo-topic.name
+          name  = "TF_VAR_audio_topic_name"
+          value = google_pubsub_topic.audio-topic.name
         }
         env {
-          name  = "TF_VAR_subscription_name"
-          value = google_pubsub_subscription.demo-subscription.name
+          name  = "TF_VAR_audio_subscription_name"
+          value = google_pubsub_subscription.audio-subscription.name
         }
 
         resources {
@@ -28,8 +28,8 @@ resource "google_cloud_run_service" "default" {
   }
 
   depends_on = [
-    google_pubsub_topic.demo-topic,
-    google_pubsub_subscription.demo-subscription,
+    google_pubsub_topic.audio-topic,
+    google_pubsub_subscription.audio-subscription,
     google_sql_database_instance.demo-db-instance
   ]
 }
@@ -40,8 +40,4 @@ resource "google_cloud_run_service_iam_member" "public_access" {
   location = google_cloud_run_service.default.location
   role     = "roles/run.invoker"
   member   = "allUsers"
-
-  depends_on = [
-    google_cloud_run_service.default
-  ]
 }

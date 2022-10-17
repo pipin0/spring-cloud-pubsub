@@ -12,9 +12,15 @@ import javax.validation.constraints.NotBlank;
 @ConfigurationProperties
 public class ConfigProperties {
     @NotBlank
-    @Value("${TF_VAR_subscription_name}")
-    private String TF_VAR_subscription_name;
+    @Value("${TF_VAR_demo_subscription_name}")
+    private String TF_VAR_demo_subscription_name;
     @NotBlank
-    @Value("${TF_VAR_topic_name}")
-    private String TF_VAR_topic_name;
+    @Value("${TF_VAR_demo_topic_name}")
+    private String TF_VAR_demo_topic_name;
+    @NotBlank
+    @Value("${TF_VAR_audio_subscription_name}")
+    private String TF_VAR_audio_subscription_name;
+    @NotBlank
+    @Value("${TF_VAR_audio_topic_name}")
+    private String TF_VAR_audio_topic_name;
 }

@@ -16,7 +16,7 @@ public class DbNotSoNiceController {
 
     @GetMapping("/getAll")
     public List<String> getTAll() {
-        return this.jdbcTemplate.queryForList("select * from fantastic_table").stream()
+        return this.jdbcTemplate.queryForList("select * from audio_table").stream()
                 .map(m -> m.values().toString()).toList();
     }
 }

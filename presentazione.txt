@@ -4,3 +4,7 @@
 
   * creazione DB: viene creato il DB con l'utente di default "postgres" però non so quale sia la password.
     Per ora creo un nuovo utente.
+
+  * versionamento DB: liquibase?
+    Per una nuova installazione, come "definisco" il DB?
+

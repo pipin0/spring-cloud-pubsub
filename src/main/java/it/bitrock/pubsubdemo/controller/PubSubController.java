@@ -13,6 +13,6 @@ public class PubSubController {
 
     @PostMapping("pub-sub")
     public void pubSub(@RequestBody String message) throws Exception {
-        pubSubService.publish(message);
+        pubSubService.publishAString(message);
     }
 }

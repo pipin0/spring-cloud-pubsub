@@ -27,5 +27,9 @@ resource "google_sql_database" "database" {
 resource "google_sql_user" "a-user" {
   name     = "aaa"
   instance = google_sql_database_instance.demo-db-instance.name
-  password = google_secret_manager_secret_version.admin-password-version.secret_data
+  password = google_secret_manager_secret_version.db-admin-password-version.secret_data
+
+  depends_on = [
+    google_sql_database_instance.demo-db-instance
+  ]
 }

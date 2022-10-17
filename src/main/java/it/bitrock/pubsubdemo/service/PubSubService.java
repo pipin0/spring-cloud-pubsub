@@ -20,22 +20,22 @@ public class PubSubService {
     private PubSubTemplate pubSubTemplate;
 
     @PostConstruct
-    private void post() {
-        read();
+    private void postConstruct() {
+        readTheString();
     }
 
-    public void publish(String message) throws Exception {
+    public void publishAString(String message) throws Exception {
         val data = ByteString.copyFromUtf8(message);
         val pubsubMessage = PubsubMessage.newBuilder().setData(data).build();
 
-        val listenableFuture = pubSubTemplate.publish(configProperties.getTF_VAR_topic_name(), pubsubMessage);
+        val listenableFuture = pubSubTemplate.publish(configProperties.getTF_VAR_demo_topic_name(), pubsubMessage);
 
         String messageId = listenableFuture.get();
         log.info("Send\n{} - {} - {}", message, messageId, System.currentTimeMillis());
     }
 
-    private void read() {
-        pubSubTemplate.subscribe(configProperties.getTF_VAR_subscription_name(), (message) -> {
+    private void readTheString() {
+        pubSubTemplate.subscribe(configProperties.getTF_VAR_demo_subscription_name(), (message) -> {
             log.info("Read\n{} - {} - {}", message.getPubsubMessage().getData().toStringUtf8(),
                     message.getPubsubMessage().getMessageId(), System.currentTimeMillis());
 
