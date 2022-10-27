@@ -6,6 +6,4 @@
         * project id: _"spring.cloud.gcp.project-id"
     * in "Cloud Run" via Terraform, simply remove these variables (GCP uses the context)
 
-* to share values (i.e. project id, topic, subscription, etc.) it is possible to use environment variables.
-  <br/>
-  Terraform will read all those variables starting by _"TF_VAR\_"_
+* Terraform reads environment variables starting by _"TF_VAR\_"_.

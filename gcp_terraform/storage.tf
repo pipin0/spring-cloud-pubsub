@@ -3,4 +3,5 @@ resource "google_storage_bucket" "demo-bucket" {
   location = var.region
 
   storage_class = "STANDARD" # this is useless, STANDARD is the default value
+  force_destroy = true
 }

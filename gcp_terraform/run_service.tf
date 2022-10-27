@@ -6,7 +6,7 @@ resource "google_cloud_run_service" "default" {
   template {
     spec {
       containers {
-        image = "gcr.io/${var.project}/${var.github_repository}:latest"
+        image = "gcr.io/${var.project}/${var.github_repository}"
 
         env {
           name  = "TF_VAR_audio_topic_name"

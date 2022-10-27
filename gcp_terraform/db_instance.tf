@@ -1,7 +1,8 @@
 resource "google_sql_database_instance" "demo-db-instance" {
-  name             = "${var.app_name_suffix}-db-instance"
-  database_version = "POSTGRES_14"
-  region           = var.region
+  name                = "${var.app_name_suffix}-db-instance"
+  database_version    = "POSTGRES_14"
+  region              = var.region
+  deletion_protection = false
 
   settings {
     availability_type = "ZONAL"
@@ -27,7 +28,7 @@ resource "google_sql_database" "database" {
 resource "google_sql_user" "a-user" {
   name     = "aaa"
   instance = google_sql_database_instance.demo-db-instance.name
-  password = google_secret_manager_secret_version.db-admin-password-version.secret_data
+  password = google_secret_manager_secret_version.db-admin-password-1.secret_data
 
   depends_on = [
     google_sql_database_instance.demo-db-instance

@@ -11,6 +11,6 @@ output "public_ip_address" {
 }
 
 output "db-admin-password" {
-  value     = data.google_secret_manager_secret_version.db-admin-password-version-data.secret_data
+  value     = data.google_secret_manager_secret_version.db-admin-password-data.secret_data
   sensitive = true
 }

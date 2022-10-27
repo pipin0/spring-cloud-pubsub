@@ -28,7 +28,7 @@ build/
 
 ### Terraform ###
 **/.terraform/*
-
+*.lock.hcl
 # .tfstate files
 *.tfstate
 *.tfstate.*
